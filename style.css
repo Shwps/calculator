@@ -1,0 +1,80 @@
+* {
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+html, body {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+    height: 100%;
+
+}
+
+
+#calcContainer {
+    display:flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color:rgb(155, 146, 146);
+    padding: 2em;
+    border-radius:3%;
+}
+
+
+#digitContainer {
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    max-width: fit-content;
+    max-height: fit-content;
+    gap:6px;
+
+}
+
+#menu {
+    display:grid;
+    grid-template-columns: repeat(1,1fr);
+    max-width: fit-content;
+    max-height: fit-content;
+}
+
+#innerContainer {
+    display:flex;
+    gap: 20px;
+
+}
+
+#display {
+    
+    padding: 10px;
+    border-radius: 6%;
+    background-color:black;
+    color:rgb(32, 155, 32);
+    font-size:3em;
+}
+
+.digit {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+    background-color: rgb(100, 104, 100);
+    border: solid;
+    color: rgb(255, 255, 255);
+    font-size: 3em;
+    border-radius: 10%;
+}
+
+.operator {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgb(73, 73, 219);
+    width: 60px;
+    height: 60px;
+    color: white;
+    font-size: 3em;
+    border-radius: 10%;
+    margin: 6px;
+}
