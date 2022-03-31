@@ -11,6 +11,7 @@ const subtractSymbol = "-";
 const multiplySymbol = "*";
 const divisionSymbol = "/";
 
+const operatorKeys = Array.from(document.querySelectorAll(".math"))
 const digitKeys = Array.from(document.querySelectorAll(".digit"));
 const display = document.querySelector("#display");
 
@@ -21,15 +22,28 @@ const subtractKey = document.querySelector(".subtract");
 const multiplyKey = document.querySelector(".multiply");
 const divisionKey = document.querySelector(".division");
 
+
 //Event Listeners
 
 for (let i = 0; i < 10; i++) {
   digitKeys[i].addEventListener("click", digitSelector);
 }
 
+operatorKeys.forEach(key => key.addEventListener("click", (e) =>{
+  if (operator != null){
+    operands[currentOperand] = parseInt(display.textContent);
+    operate();
+  }
+  operator = e.target.textContent;
+  operands[currentOperand++] = parseInt(display.textContent);
+  isWaiting = true;
+}))
+
+
 clearKey.addEventListener("click", clearValues);
 
-addKey.addEventListener("click", () => {
+
+/* addKey.addEventListener("click", () => {
   if (operator != null) {
     operands[currentOperand] = parseInt(display.textContent);
     operate();
@@ -67,7 +81,7 @@ divisionKey.addEventListener("click", () => {
   operator = divisionSymbol;
   operands[currentOperand++] = parseInt(display.textContent);
   isWaiting = true;
-});
+}); */
 
 equalsKey.addEventListener("click", equals);
 
