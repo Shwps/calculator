@@ -34,7 +34,7 @@ operatorKeys.forEach(key => key.addEventListener("click", (e) =>{
     operands[currentOperand] = parseInt(display.textContent);
     operate();
   }
-  operator = e.target.textContent;
+  operator = e.target.id;
   operands[currentOperand++] = parseInt(display.textContent);
   isWaiting = true;
 }))
