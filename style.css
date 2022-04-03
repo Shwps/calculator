@@ -8,6 +8,7 @@ html, body {
     align-items: center;
     margin: 0;
     height: 100%;
+    background-color: rgb(8, 8, 39);
 
 }
 
@@ -15,10 +16,11 @@ html, body {
 #calcContainer {
     display:flex;
     flex-direction: column;
-    gap: 20px;
-    background-color:rgb(155, 146, 146);
-    padding: 2em;
-    border-radius:3%;
+    box-shadow: 10px 10px 50px;
+    background-color:rgb(16, 19, 44);
+    border-radius: 50px;
+    width: 30rem;
+    height:40rem;
 }
 
 
@@ -27,54 +29,65 @@ html, body {
     grid-template-columns: repeat(3,1fr);
     max-width: fit-content;
     max-height: fit-content;
-    gap:6px;
-
+    margin: 2em;
+    
+    
 }
 
 #menu {
-    display:grid;
-    grid-template-columns: repeat(1,1fr);
-    max-width: fit-content;
-    max-height: fit-content;
+    display:flex;
+    flex:1 0 auto;
+    flex-direction: column;
 }
 
 #innerContainer {
     display:flex;
-    gap: 20px;
-
+    flex:1 1 auto;
 }
 
 #display {
-    
+    flex: 0 auto;
     padding: 10px;
-    border-radius: 6%;
-    background-color:black;
-    color:rgb(32, 155, 32);
+    border-radius: 50px 50px 0px 0px;
+    background-color:rgb(255, 255, 255);
+    color:rgb(0, 0, 0);
+    padding-top: 10%;
     font-size:3em;
+    border-bottom: solid 10px rgb(219, 37, 37);
 }
 
 .digit {
     display:flex;
     justify-content: center;
     align-items: center;
+    margin:6px;
     width: 80px;
     height: 80px;
-    background-color: rgb(100, 104, 100);
-    border: solid;
+    background-color: rgba(8, 235, 243, 0);
+    box-shadow: inset 0px 0px 10px rgba(210, 216, 216, 0.753);
+    border-radius: 30%;
+    border:solid 4px;
     color: rgb(255, 255, 255);
     font-size: 3em;
-    border-radius: 10%;
 }
 
 .operator {
+    flex:1 0 auto;
     display:flex;
     justify-content: center;
     align-items: center;
-    background-color: rgb(73, 73, 219);
-    width: 60px;
-    height: 60px;
+    background-color: rgb(219, 73, 73);
     color: white;
+    border-bottom: solid 4px;
     font-size: 3em;
-    border-radius: 10%;
-    margin: 6px;
 }
+
+.equals {
+    border-radius: 0px 0px 15px;
+    border-bottom: solid 0px;
+}
+
+.previousCalc{
+    font-size: 2rem;
+}
+

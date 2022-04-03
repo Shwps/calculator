@@ -13,101 +13,53 @@ const divisionSymbol = "/";
 
 const operatorKeys = Array.from(document.querySelectorAll(".math"))
 const digitKeys = Array.from(document.querySelectorAll(".digit"));
-const display = document.querySelector("#display");
+const currentCalc = document.querySelector("#currentCalc");
 
 const clearKey = document.querySelector(".clear");
-const addKey = document.querySelector(".add");
 const equalsKey = document.querySelector(".equals");
-const subtractKey = document.querySelector(".subtract");
-const multiplyKey = document.querySelector(".multiply");
-const divisionKey = document.querySelector(".division");
+
 
 
 //Event Listeners
-
-for (let i = 0; i < 10; i++) {
-  digitKeys[i].addEventListener("click", digitSelector);
-}
+digitKeys.forEach(key => key.addEventListener("click", digitSelector));
 
 operatorKeys.forEach(key => key.addEventListener("click", (e) =>{
   if (operator != null){
-    operands[currentOperand] = parseInt(display.textContent);
+    operands[currentOperand] = parseInt(currentCalc.textContent);
     operate();
   }
   operator = e.target.id;
-  operands[currentOperand++] = parseInt(display.textContent);
+  operands[currentOperand++] = parseInt(currentCalc.textContent);
   isWaiting = true;
-}))
-
+}));
 
 clearKey.addEventListener("click", clearValues);
-
-
-/* addKey.addEventListener("click", () => {
-  if (operator != null) {
-    operands[currentOperand] = parseInt(display.textContent);
-    operate();
-  }
-  operator = addSymbol;
-  operands[currentOperand++] = parseInt(display.textContent);
-  isWaiting = true;
-});
-
-subtractKey.addEventListener("click", () => {
-  if (operator != null) {
-    operands[currentOperand] = parseInt(display.textContent);
-    operate();
-  }
-  operator = subtractSymbol;
-  operands[currentOperand++] = parseInt(display.textContent);
-  isWaiting = true;
-});
-
-multiplyKey.addEventListener("click", () => {
-  if (operator != null) {
-    operands[currentOperand] = parseInt(display.textContent);
-    operate();
-  }
-  operator = multiplySymbol;
-  operands[currentOperand++] = parseInt(display.textContent);
-  isWaiting = true;
-});
-
-divisionKey.addEventListener("click", () => {
-  if (operator != null) {
-    operands[currentOperand] = parseInt(display.textContent);
-    operate();
-  }
-  operator = divisionSymbol;
-  operands[currentOperand++] = parseInt(display.textContent);
-  isWaiting = true;
-}); */
 
 equalsKey.addEventListener("click", equals);
 
 function equals() {
-  operands[currentOperand] = parseInt(display.textContent);
+  operands[currentOperand] = parseInt(currentCalc.textContent);
   operate();
 }
 
 function digitSelector(e) {
   if (isWaiting == true) {
-    clearDisplay();
+    clearcurrentCalc();
     isWaiting = false;
   }
-  if (display.textContent == "0") {
-    display.textContent = e.target.textContent;
+  if (currentCalc.textContent == "0") {
+    currentCalc.textContent = e.target.textContent;
   } else {
-    display.textContent += e.target.textContent;
+    currentCalc.textContent += e.target.textContent;
   }
 }
 
-function clearDisplay() {
-  display.textContent = 0;
+function clearcurrentCalc() {
+  currentCalc.textContent = 0;
 }
 
 function clearValues() {
-  display.textContent = 0;
+  currentCalc.textContent = 0;
   operator = null;
 }
 
@@ -132,17 +84,17 @@ function operate() {
 
 //Logical functions
 function add() {
-  display.textContent = operands[currentOperand - 1] + operands[currentOperand];
+  currentCalc.textContent = operands[currentOperand - 1] + operands[currentOperand];
 }
 
 function subtract(numA, numB) {
-  display.textContent = operands[currentOperand - 1] - operands[currentOperand];
+  currentCalc.textContent = operands[currentOperand - 1] - operands[currentOperand];
 }
 
 function multiply(numA, numB) {
-  display.textContent = operands[currentOperand - 1] * operands[currentOperand];
+  currentCalc.textContent = operands[currentOperand - 1] * operands[currentOperand];
 }
 
 function divide(numA, numB) {
-  display.textContent = operands[currentOperand - 1] / operands[currentOperand];
+  currentCalc.textContent = operands[currentOperand - 1] / operands[currentOperand];
 }
