@@ -24,16 +24,25 @@ const equalsKey = document.querySelector(".equals");
 digitKeys.forEach(key => key.addEventListener("click", digitSelector));
 
 operatorKeys.forEach(key => key.addEventListener("click", (e) =>{
+  removeClasses();
   if (operator != null){
     operands[currentOperand] = parseInt(currentCalc.textContent);
     operate();
   }
   operator = e.target.id;
   operands[currentOperand++] = parseInt(currentCalc.textContent);
+  key.classList.add("operatorSelected")
   isWaiting = true;
 }));
 
-clearKey.addEventListener("click", clearValues);
+function removeClasses () {
+  operatorKeys.forEach(key => key.classList.remove("operatorSelected"))
+}
+
+clearKey.addEventListener("click", () => {
+  clearValues();
+  removeClasses();
+});
 
 equalsKey.addEventListener("click", equals);
 

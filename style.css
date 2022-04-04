@@ -1,5 +1,10 @@
+@font-face {
+    font-family: customFontCool;
+    src: url(fonts/coolvetica\ rg.otf);
+  }
+
 * {
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    font-family: customFontCool;
 }
 
 html, body {
@@ -53,7 +58,7 @@ html, body {
     color:rgb(0, 0, 0);
     padding-top: 10%;
     font-size:3em;
-    border-bottom: solid 10px rgb(219, 37, 37);
+    border-bottom: solid 10px rgb(230, 151, 151);
 }
 
 .digit {
@@ -61,14 +66,19 @@ html, body {
     justify-content: center;
     align-items: center;
     margin:6px;
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     background-color: rgba(8, 235, 243, 0);
-    box-shadow: inset 0px 0px 10px rgba(210, 216, 216, 0.753);
-    border-radius: 30%;
+    border-radius: 20%;
     border:solid 4px;
     color: rgb(255, 255, 255);
+    transition: all .3s;
     font-size: 3em;
+} 
+
+.digit:hover {
+    background-color: rgb(219, 73, 73);
+    transform: scale(1.1);
 }
 
 .operator {
@@ -78,8 +88,14 @@ html, body {
     align-items: center;
     background-color: rgb(219, 73, 73);
     color: white;
-    border-bottom: solid 4px;
+    border-bottom: solid 2px rgb(255, 255, 255);
     font-size: 3em;
+    transition: all .6s;
+}
+
+.operatorSelected {
+    box-shadow: inset 0px 0px 30px rgb(104, 22, 22);
+    font-size: 4em;
 }
 
 .equals {
@@ -90,4 +106,6 @@ html, body {
 .previousCalc{
     font-size: 2rem;
 }
+
+
 
