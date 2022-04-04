@@ -103,6 +103,11 @@ html, body {
     border-bottom: solid 0px;
 }
 
+.equals:hover {
+    background-color: rgb(38, 45, 102);
+    font-size: 4em;
+}
+
 .previousCalc{
     font-size: 2rem;
 }

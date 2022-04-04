@@ -49,6 +49,7 @@ equalsKey.addEventListener("click", equals);
 function equals() {
   operands[currentOperand] = parseInt(currentCalc.textContent);
   operate();
+  removeClasses();
 }
 
 function digitSelector(e) {
