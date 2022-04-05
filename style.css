@@ -58,7 +58,18 @@ html, body {
     color:rgb(0, 0, 0);
     padding-top: 10%;
     font-size:3em;
-    border-bottom: solid 10px rgb(230, 151, 151);
+    border-bottom: solid 16px rgb(142, 219, 91);
+}
+
+#currentCalc {
+    font-size:4rem;
+    height:4rem;
+}
+
+#previousCalc {
+    height:2rem;
+    font-size: 2rem;
+    color: rgb(27, 27, 27);
 }
 
 .digit {
@@ -68,12 +79,12 @@ html, body {
     margin:6px;
     width: 70px;
     height: 70px;
-    background-color: rgba(8, 235, 243, 0);
+    background-color: rgb(22, 8, 32);
     border-radius: 20%;
-    border:solid 4px;
     color: rgb(255, 255, 255);
     transition: all .3s;
     font-size: 3em;
+    box-shadow:inset 0px 0px 6px rgb(5, 3, 10);
 } 
 
 .digit:hover {
@@ -99,12 +110,12 @@ html, body {
 }
 
 .equals {
-    border-radius: 0px 0px 15px;
+    border-radius: 0px 0px 50px;
     border-bottom: solid 0px;
 }
 
 .equals:hover {
-    background-color: rgb(38, 45, 102);
+    background-color: rgb(64, 89, 231);
     font-size: 4em;
 }
 

@@ -14,6 +14,7 @@ const divisionSymbol = "/";
 const operatorKeys = Array.from(document.querySelectorAll(".math"))
 const digitKeys = Array.from(document.querySelectorAll(".digit"));
 const currentCalc = document.querySelector("#currentCalc");
+const previousCalc = document.querySelector("#previousCalc");
 
 const clearKey = document.querySelector(".clear");
 const equalsKey = document.querySelector(".equals");
@@ -49,12 +50,13 @@ equalsKey.addEventListener("click", equals);
 function equals() {
   operands[currentOperand] = parseInt(currentCalc.textContent);
   operate();
+  operator = null;
   removeClasses();
 }
 
 function digitSelector(e) {
   if (isWaiting == true) {
-    clearcurrentCalc();
+    clearCurrentCalc();
     isWaiting = false;
   }
   if (currentCalc.textContent == "0") {
@@ -64,12 +66,14 @@ function digitSelector(e) {
   }
 }
 
-function clearcurrentCalc() {
+function clearCurrentCalc() {
   currentCalc.textContent = 0;
+  
 }
 
 function clearValues() {
-  currentCalc.textContent = 0;
+  currentCalc.textContent = "";
+  previousCalc.textContent = "";
   operator = null;
 }
 
@@ -89,6 +93,14 @@ function operate() {
       break;
     default:
       break;
+  }
+}
+
+function updatePreviousCalc (){
+  if(previousCalc == "0"){
+    previousCalc.textContent = `${operands[currentOperand]} ${operator} `
+  }else {
+    previousCalc.textContent += `${operands[currentOperand]} ${operator} `
   }
 }
 
