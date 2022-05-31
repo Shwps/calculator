@@ -4,14 +4,18 @@ let lastOperation;
 let operands = [];
 let currentOperand = 0;
 
+let one;
+let two;
+
 let isWaiting = false;
+let onlyOperator = false;
 
 const addSymbol = "+";
 const subtractSymbol = "-";
 const multiplySymbol = "*";
 const divisionSymbol = "/";
 
-const operatorKeys = Array.from(document.querySelectorAll(".math"))
+const operatorKeys = Array.from(document.querySelectorAll(".math"));
 const digitKeys = Array.from(document.querySelectorAll(".digit"));
 const currentCalc = document.querySelector("#currentCalc");
 const previousCalc = document.querySelector("#previousCalc");
@@ -19,25 +23,26 @@ const previousCalc = document.querySelector("#previousCalc");
 const clearKey = document.querySelector(".clear");
 const equalsKey = document.querySelector(".equals");
 
-
-
 //Event Listeners
-digitKeys.forEach(key => key.addEventListener("click", digitSelector));
+digitKeys.forEach((key) => key.addEventListener("click", digitSelector));
 
-operatorKeys.forEach(key => key.addEventListener("click", (e) =>{
-  removeClasses();
-  if (operator != null){
-    operands[currentOperand] = parseInt(currentCalc.textContent);
-    operate();
-  }
-  operator = e.target.id;
-  operands[currentOperand++] = parseInt(currentCalc.textContent);
-  key.classList.add("operatorSelected")
-  isWaiting = true;
-}));
+operatorKeys.forEach((key) =>
+  key.addEventListener("click", (e) => {
+    removeClasses();
+    if (operator != null) {
+      two = parseFloat(currentCalc.textContent);
+      operate();
+    }
+      operator = e.target.id;
+      one = parseFloat(currentCalc.textContent);
+      key.classList.add("operatorSelected");
+      isWaiting = true;
+      updatePreviousCalc();
+      onlyOperator = false;
+  }));
 
-function removeClasses () {
-  operatorKeys.forEach(key => key.classList.remove("operatorSelected"))
+function removeClasses() {
+  operatorKeys.forEach((key) => key.classList.remove("operatorSelected"));
 }
 
 clearKey.addEventListener("click", () => {
@@ -48,33 +53,64 @@ clearKey.addEventListener("click", () => {
 equalsKey.addEventListener("click", equals);
 
 function equals() {
-  operands[currentOperand] = parseInt(currentCalc.textContent);
-  operate();
-  operator = null;
-  removeClasses();
+  if (operator != null) {
+    two = parseFloat(currentCalc.textContent);
+    operate();
+    operator = null;
+    removeClasses();
+    isWaiting = true;
+    updatePreviousCalc();
+    clearOperands()
+    onlyOperator = true;
+  }
 }
 
 function digitSelector(e) {
-  if (isWaiting == true) {
+  if(previousCalc.textContent == "" || operator != null){
+    if (isWaiting == true) {
     clearCurrentCalc();
     isWaiting = false;
-  }
-  if (currentCalc.textContent == "0") {
-    currentCalc.textContent = e.target.textContent;
-  } else {
-    currentCalc.textContent += e.target.textContent;
+    }
+    if (currentCalc.textContent == "0") {
+      currentCalc.textContent = e.target.textContent;
+    } else {
+      currentCalc.textContent += e.target.textContent;
+    }
   }
 }
 
 function clearCurrentCalc() {
-  currentCalc.textContent = 0;
-  
+  currentCalc.textContent = "0";
+}
+
+function isOperandsNull() {
+  if(one == null && two == null){
+    return true;
+  }
+  return false;
+}
+
+function clearOperands(){
+  one = null;
+  two = null;
+}
+
+function isOperatorNull(){
+  if(operator == null){
+    return true;
+  } else {
+    return false;
+  }
 }
 
 function clearValues() {
-  currentCalc.textContent = "";
+  currentCalc.textContent = "0";
   previousCalc.textContent = "";
   operator = null;
+  one = null;
+  two = null;
+  isWaiting = false;
+  onlyOperator = false;
 }
 
 function operate() {
@@ -96,27 +132,29 @@ function operate() {
   }
 }
 
-function updatePreviousCalc (){
-  if(previousCalc == "0"){
-    previousCalc.textContent = `${operands[currentOperand]} ${operator} `
-  }else {
-    previousCalc.textContent += `${operands[currentOperand]} ${operator} `
+function updatePreviousCalc() {
+  if(onlyOperator){
+    previousCalc.textContent += ` ${operator} `;
+  } else if (operator == null) {
+    previousCalc.textContent += `${two}`;
+  } else {
+    previousCalc.textContent += `${two} ${operator} `;
   }
 }
 
 //Logical functions
 function add() {
-  currentCalc.textContent = operands[currentOperand - 1] + operands[currentOperand];
+  currentCalc.textContent = one + two;
 }
 
 function subtract(numA, numB) {
-  currentCalc.textContent = operands[currentOperand - 1] - operands[currentOperand];
+  currentCalc.textContent = one - two;
 }
 
 function multiply(numA, numB) {
-  currentCalc.textContent = operands[currentOperand - 1] * operands[currentOperand];
+  currentCalc.textContent = one * two;
 }
 
 function divide(numA, numB) {
-  currentCalc.textContent = operands[currentOperand - 1] / operands[currentOperand];
+  currentCalc.textContent = one / two;
 }
