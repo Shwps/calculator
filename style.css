@@ -9,7 +9,8 @@
 
 html, body {
     display:flex;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: space-between;
     align-items: center;
     margin: 0;
     height: 100%;
@@ -122,6 +123,17 @@ html, body {
 .previousCalc{
     font-size: 2rem;
 }
+
+.footer,
+a{
+    font-size: 52px;
+    color:rgb(255, 255, 255);
+    text-shadow: black 3px 3px;
+    padding-bottom:36px;
+    padding-top:24px;
+    text-align: center;
+    text-decoration: unset;
+  }
 
 
 
